@@ -1200,6 +1200,7 @@
   <phrase section="Front" data="HOME_LISTADD_P">Thank you! Your listing inactive pending our verification proccess. Once approved, you will be notified.</phrase>
   <phrase section="Front" data="HOME_MEMEXP">Your membership has already expired, or the number of active listings is at maximum. You will need to renew it, or delete some of the listings in order to add more.</phrase>
   <phrase section="Front" data="HOME_MORES">More from this seller</phrase>
+  <phrase section="Front" data="REFERENCE_SOURCE">Reference to the source</phrase>  
   <phrase section="Front" data="HOME_MSG_CREQ">Contact request from [COMPANY]</phrase>
   <phrase section="Front" data="HOME_MSG_SENTOK">Your message has been sent successfully.</phrase>
   <phrase section="Front" data="HOME_SPCL">On Special Right Now</phrase>
