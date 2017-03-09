@@ -40,7 +40,7 @@
         <?php foreach(Utility::jSonToArray($core->cond_list) as $cond):?>
         <a rel="nofollow" href="<?php echo Url::buildUrl("condition", $cond->condition_name);?>" class="inverted item<?php echo Url::setActive("condition", $cond->condition_name);?>">
         <div class="right floated content">
-          <div class="wojo secondary rounded label"><?php echo $cond->total;?></div>
+          <!--<div class="wojo secondary rounded label"><!?php echo $cond->total;?></div>-->
         </div>
         <div class="content"> <?php echo $cond->condition_name;?> </div>
         </a>
@@ -55,7 +55,7 @@
         <?php foreach(Utility::jSonToArray($core->makes) as $makes):?>
         <a rel="nofollow" href="<?php echo Url::buildUrl("make_name", Url::doSeo($makes->make_name));?>" class="inverted item<?php echo Url::setActive("make_name", Url::doSeo($makes->make_name));?>">
         <div class="right floated content">
-          <div class="wojo secondary rounded label"><?php echo $makes->total;?></div>
+          <!--<div class="wojo secondary rounded label"><!?php echo $makes->total;?></div>-->
         </div>
         <div class="content"> <?php echo $makes->make_name;?> </div>
         </a>
@@ -70,7 +70,7 @@
         <?php foreach(Utility::jSonToArray($core->color) as $color):?>
         <a rel="nofollow" href="<?php echo Url::buildUrl("color", $color->color_e);?>" class="inverted item<?php echo Url::setActive("color", $color->color_e);?>">
         <div class="right floated content">
-          <div class="wojo secondary rounded label"><?php echo $color->total;?></div>
+          <!--<div class="wojo secondary rounded label"><!?php echo $color->total;?></div>-->
         </div>
         <div class="content"> <?php echo $color->color_e;?> </div>
         </a>
@@ -85,7 +85,7 @@
         <?php foreach(Utility::jSonToArray($core->category_list) as $category):?>
         <a rel="nofollow" href="<?php echo Url::buildUrl("body", Url::doSeo($category->category_name));?>" class="inverted item<?php echo Url::setActive("body", Url::doSeo($category->category_name));?>">
         <div class="right floated content">
-          <div class="wojo secondary rounded label"><?php echo $category->total;?></div>
+          <!--<div class="wojo secondary rounded label"><!?php echo $category->total;?></div>-->
         </div>
         <div class="content"> <?php echo $category->category_name;?> </div>
         </a>
