@@ -21,7 +21,7 @@
       <?php endif;?>
     </div>
     <div class="wojo huge fitted inverted header">
-      <div class="content"> <?php echo $data->result->year;?> <?php echo $data->result->nice_title;?>
+        <div class="content" style="font-size: 24px;"> <?php echo $data->result->year;?> <?php echo $data->result->nice_title;?>
         <p class="subheader"><span class="wojo small black label"># <?php echo $data->result->stock_id;?></span></p>
       </div>
     </div>
@@ -139,24 +139,35 @@
             </div>
           </div>
         </div>
-        <div class="padding"> <a href="<?php echo Url::doUrl(URL_SELLER, $location->name_slug);?>" class="wojo fluid primary button"> <?php echo Lang::$word->HOME_MORES;?></a> </div>
+          <?php if($data->result->original_source) { ?>
+        <div class="padding"> <a href="<?php echo $data->result->original_source; ?>" class="wojo fluid primary button"> <?php echo Lang::$word->REFERENCE_SOURCE;?></a> </div>
+          <?php } ?>
       </div>
     </div>
     <div class="wojo space divider"></div>
   </div>
   
   <!--  <div class="wojo double space divider"></div>-->
-  <ul class="wojo tabs fluid clearfix">
-    <li><a data-tab="#general" class="active"><i class="icon note"></i><?php echo Lang::$word->DESC;?></a></li>
-    <li><a data-tab="#feat"><i class="icon car"></i><?php echo Lang::$word->LST_MFET;?></a></li>
-    <li><a id="ghack" data-tab="#location"><i class="icon map marker"></i><?php echo Lang::$word->LOCATION;?></a></li>
-    <li><a data-tab="#contact"><i class="icon email"></i><?php echo Lang::$word->CONTACT;?></a></li>
-  </ul>
-  <div class="wojo top bottom attached tertiary segment padded">
+  <!--<ul class="wojo tabs fluid clearfix">-->
+    <!--<li><a data-tab="#general" class="active"><i class="icon note"></i><!?php echo Lang::$word->DESC;?></a></li>-->
+    <!--<li><a data-tab="#feat"><i class="icon car"></i><!?php echo Lang::$word->LST_MFET;?></a></li>-->
+    <!--<li><a id="ghack" data-tab="#location"><i class="icon map marker"></i><!?php echo Lang::$word->LOCATION;?></a></li>-->
+    <!--<li><a data-tab="#contact"><i class="icon email"></i><!?php echo Lang::$word->CONTACT;?></a></li>-->
+  <!--</ul>-->
+  <?php if($data->result->body) { ?>
+  <div class="wojo bottom attached tertiary segment padded">
+      <p><i class="icon note"></i><b><?php echo Lang::$word->DESC;?></b></p>
     <div id="general" class="wojo tab item"> <?php echo Validator::cleanOut($data->result->body);?> </div>
-    <div id="feat" class="wojo tab item">
-      <?php $featurerow = $content->getFeaturesById($data->result->features);?>
-      <?php if($featurerow):?>
+  </div>
+  <?php } ?>
+  
+  <?php $featurerow = $content->getFeaturesById($data->result->features);?>
+   <?php if($featurerow):?>
+    <!--<div id="feat" class="wojo tab item">-->
+    <div class="wojo bottom attached tertiary segment padded">
+        <p><i class="icon car"></i><b><?php echo Lang::$word->LST_MFET;?></b></p>
+    <div>
+      
       <div class="wojo relaxed list">
         <div class="columns half-horizontal-gutters">
           <?php foreach ($featurerow as $frow):?>
@@ -167,12 +178,17 @@
           <?php unset($frow);?>
         </div>
       </div>
+    </div>
+    </div> 
       <?php endif;?>
+    <div class="wojo bottom attached tertiary segment padded">
+    <!--<div id="location" class="wojo tab item">-->
+      <div id="map" style="height:200px"></div>
+    <!--</div>-->
     </div>
-    <div id="location" class="wojo tab item">
-      <div id="map" style="height:400px"></div>
-    </div>
-    <div id="contact" class="wojo tab item">
+    <div class="wojo bottom attached tertiary segment padded">
+    <div>
+    <!--<div id="contact" class="wojo tab item">-->
       <div class="columns gutters">
         <div class="screen-10 tablet-15 phone-100"><img src="<?php echo UPLOADURL . ($location->logo ? "showrooms/" . $location->logo : ($data->result->avatar ? "avatars/" . $data->result->avatar : "avatars/blank.png"));?>" alt="" class="wojo normal image"></div>
         <div class="screen-30 tablet-35 phone-100">
@@ -257,7 +273,7 @@
 // <![CDATA[
  var map = null;
  $(document).ready(function() {
-     $('#ghack').one('click', function() {
+//     $('#ghack').one('click', function() {
          var geocoder;
          geocoder = new google.maps.Geocoder();
          var latitude = parseFloat(<?php echo $location->lat;?>);
@@ -265,7 +281,7 @@
          loadMap(latitude, longitude);
          setupMarker(latitude, longitude);
 
-     });
+//     });
  });
  // Loads the maps
  loadMap = function(latitude, longitude) {
