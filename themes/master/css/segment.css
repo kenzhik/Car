@@ -150,7 +150,7 @@
 .wojo.secondary.segment {
   background-color: #495376;
   margin: 0;
-  padding: 4em 2em;
+  /*padding: 4em 2em;*/
 }
 .wojo.quaternary.segment {
   background-color: #F3F6FD;

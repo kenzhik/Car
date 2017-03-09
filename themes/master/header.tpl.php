@@ -20,7 +20,17 @@
 var SITEURL = "<?php echo SITEURL; ?>";
 var ADMINURL = "<?php echo ADMINURL; ?>";
 </script>
-<link href="<?php echo THEMEU . '/cache/' . Cache::cssCache(array('css/base.css','css/button.css','css/image.css','css/icon.css','css/flags.css','css/breadcrumb.css','css/tooltip.css','css/form.css','css/input.css','css/table.css','css/label.css','css/segment.css','css/message.css','css/divider.css','css/dropdown.css','css/list.css','css/header.css','css/menu.css','css/datepicker.css','css/editor.css','css/feed.css','css/utility.css','css/style.css'),'css');?>" rel="stylesheet" type="text/css" />
+<?php 
+$caches = 1;
+$css = array('css/base.css','css/button.css','css/image.css','css/icon.css','css/flags.css','css/breadcrumb.css','css/tooltip.css','css/form.css','css/input.css','css/table.css','css/label.css','css/segment.css','css/message.css','css/divider.css','css/dropdown.css','css/list.css','css/header.css','css/menu.css','css/datepicker.css','css/editor.css','css/feed.css','css/utility.css','css/style.css');
+?>
+
+<link href="<?php echo THEMEU . '/cache/' . Cache::cssCache($css,'css');?>" rel="stylesheet" type="text/css" />
+<?php 
+//  foreach ($css as $value) {
+//         echo '<link href="'.$value.'" rel="stylesheet" type="text/css" />';
+//      } 
+?>
 <script type="text/javascript" src="<?php echo SITEURL;?>/assets/jquery.js"></script>
 <script type="text/javascript" src="<?php echo SITEURL;?>/assets/global.js"></script>
 </head>
