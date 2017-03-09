@@ -1,0 +1,19 @@
+1. Unzip attached into your CDP root directory and overwrite the existing files.
+
+2. Go to phpmyadmin, select your database and from SQL tab paste:
+
+ALTER TABLE `settings` 
+	ADD COLUMN `mapapi` varchar(80)  COLLATE utf8_general_ci NULL after `vinapi`;
+
+ALTER TABLE `settings` 
+	ADD COLUMN `make_list` blob after `category_list`;
+
+ALTER TABLE `settings` 
+	ADD COLUMN `model_list` blob after `make_list`;
+
+UPDATE `settings` SET `wojov` = '2.01' WHERE `id` = '1'
+
+Click on GO button.
+
+3. Get your google map api key, and enter it from admin -> configuration page 
+4. Update one of your listings in order for database make/model changes

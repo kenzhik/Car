@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /lib/
+Disallow: /assets/
+Disallow: /themes/
+Disallow: /mailer/
+Disallow: /ajax/
+Disallow: /cache/
+Disallow: /*filter*
