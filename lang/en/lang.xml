@@ -258,7 +258,9 @@
   <phrase section="Localization" data="_SECONDS">Seconds</phrase>			
   <phrase section="Localization" data="_WEEK">Week</phrase>			
   <phrase section="Localization" data="_WEEKS">Weeks</phrase>			
-  <phrase section="Localization" data="_YEAR">Year</phrase>			
+  <phrase section="Localization" data="_YEAR">Year</phrase>
+  <phrase section="Localization" data="_SEARCH">Search</phrase>	
+  <phrase section="Localization" data="_TEXT">Search in text</phrase>			
   <phrase section="Localization" data="_YEARS">Years</phrase>			
   <phrase section="Localization" data="AGO">ago</phrase>			
   <phrase section="Localization" data="APR">Apr</phrase>			

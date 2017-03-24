@@ -876,7 +876,8 @@
       public function getFooterBits()
       {
 		  
-		  $row = self::$db->select(self::liTable, array("make_name", "category_name"), null, "ORDER BY make_name")->results();
+//		  $row = self::$db->select(self::liTable, array("make_name", "category_name"), null, "ORDER BY make_name")->results();
+                  $row ='';
           return ($row) ? $row : 0;
       }
 	  
@@ -1090,7 +1091,8 @@
 			  "category" => 4,
 			  "vcondition" => 5,
 			  "doors" => 6,
-			  "fuel" => 6
+			  "fuel" => 6,
+                          "q" => ''
 			  );
 		  if (array_intersect_key($qs, $required)) {
 			  if (!empty($_GET['make_id']) and $make_id = Validator::sanitize($_GET['make_id'], "digits", 11)) {
@@ -1117,7 +1119,12 @@
               if (!empty($_GET['fuel']) and $fuel = Validator::sanitize($_GET['fuel'], "digits", 2)) {
 				  $and .= " AND l.fuel = {$fuel}";
 			  } 
-			  
+                          
+                          
+              if (!empty($_GET['q']) and $text = Validator::sanitize($_GET['q'], "string", 255)) {
+				  $and .= " AND l.nice_title like '%{$text}%' or l.color_e like '%{$text}%' or l.year like '%{$text}%' or l.vin like '%{$text}%' or l.title like '%{$text}%' or l.stock_id like '%{$text}%' or l.price like '%{$text}%' or l.drive_train like '%{$text}%'";
+			  } 
+                          
 			  if (!empty($_GET['price']) and $price = Validator::sanitize($_GET['price'], "digits", 12)) {
 				  switch($price) {
 					  case 10 :

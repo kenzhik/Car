@@ -21,6 +21,10 @@
   <div class="wojo primary bg">
     <div class="wojo segment bottom attached form">
       <form id="wojo_form" name="wojo_form" method="get">
+          <div class="field">
+            <!--<label><!?php echo Lang::$word->_SEARCH;?></label>-->
+            <input type="text"  name="q" placeholder="<?php echo Lang::$word->_TEXT;?> ...">
+          </div>
         <div class="three fields">
           <div class="field">
             <select name="make_id">
