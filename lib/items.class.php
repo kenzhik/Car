@@ -1121,8 +1121,39 @@
 			  } 
                           
                           
-              if (!empty($_GET['q']) and $text = Validator::sanitize($_GET['q'], "string", 255)) {
-				  $and .= " AND l.nice_title like '%{$text}%' or l.color_e like '%{$text}%' or l.year like '%{$text}%' or l.vin like '%{$text}%' or l.title like '%{$text}%' or l.stock_id like '%{$text}%' or l.price like '%{$text}%' or l.drive_train like '%{$text}%'";
+              if (!empty($_GET['q']) and $q = Validator::sanitize($_GET['q'], "string", 255)) {
+                  $text = explode(" ", $q);
+                  foreach ($text as $value) {
+                      $sql[] = "l.nice_title like '%{$value}%' or "
+                                  . "l.color_e rlike '%{$value}%' or "
+                                  . "l.year like '%{$value}%' or "
+                                  . "l.vin like '%{$value}%' or "
+                                  . "l.title like '%{$value}%' or "
+                                  . "l.stock_id like '%{$value}%' or "
+                                  . "l.price like '%{$value}%' or "
+                                  . "l.drive_train like '%{$value}%' or "
+                                  . "l.engine like '%{$value}%' or "
+                                  . "l.body like '%{$value}%'";
+//                      $sql[] = "l.nice_title like '%{$value}%'";
+//                      $sql[] = "l.color_e like '%{$value}%'";
+//                      $sql[] =  "l.year like '%{$value}%'";
+//                      $sql[] = "l.vin like '%{$value}%'";
+//                      $sql[] = "l.title like '%{$value}%'";
+//                      $sql[] = "l.stock_id like '%{$value}%'";
+//                      $sql[] = "l.price like '%{$value}%'";
+//                      $sql[] = "l.drive_train like '%{$value}%'";
+//                      $sql[] = "l.body like '%{$value}%'";
+                  }
+                   $and .= " AND ".implode(" AND ", $sql);
+//				  $and .= " AND l.nice_title like '%{$text}%' or "
+//                                  . "l.color_e rlike '%{$text}%' or "
+//                                  . "l.year like '%{$text}%' or "
+//                                  . "l.vin like '%{$text}%' or "
+//                                  . "l.title like '%{$text}%' or "
+//                                  . "l.stock_id like '%{$text}%' or "
+//                                  . "l.price like '%{$text}%' or "
+//                                  . "l.drive_train like '%{$text}%' or "
+//                                  . "l.body like '%{$text}%'";
 			  } 
                           
 			  if (!empty($_GET['price']) and $price = Validator::sanitize($_GET['price'], "digits", 12)) {

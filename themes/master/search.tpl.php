@@ -120,12 +120,15 @@
       <a href="<?php echo Url::doUrl(URL_SEARCH);?>" class="item<?php echo Url::setActive("order", false);?>"> <?php echo Lang::$word->DEFAULT;?> </a> <a href="<?php echo Url::buildUrl("order", "year/DESC", "sorting");?>" class="item<?php echo Url::setActive("order", "year");?>"><?php echo Lang::$word->_YEAR;?></a> <a href="<?php echo Url::buildUrl("order", "price/DESC", "sorting");?>" class="item<?php echo Url::setActive("order", "price");?>"><?php echo Lang::$word->PRICE;?></a> <a href="<?php echo Url::buildUrl("order", "make/DESC", "sorting");?>" class="item<?php echo Url::setActive("order", "make");?>"><?php echo Lang::$word->LST_MAKE;?></a> <a href="<?php echo Url::buildUrl("order", "model/DESC", "sorting");?>" class="item<?php echo Url::setActive("order", "model");?>"><?php echo Lang::$word->LST_MODEL;?></a>
       <div class="item" data-content="ASC/DESC"><a href="<?php echo Url::sortItems(Url::doUrl(URL_SEARCH), "order");?>"><i class="icon unfold more link"></i></a> </div>
     </div>
-    <div class="push-right"> <a <?php if(isset($_GET['list'])) echo 'href="' . Url::buildUrl("list", null, "view") . '"';?> class="wojo small icon button<?php if(!isset($_GET['list'])) echo ' secondary active';?>"><i class="icon grid"></i></a> <a <?php if(!isset($_GET['list'])) echo 'href="' . Url::buildUrl("list", "true", "view") . '"';?> class="wojo small icon button<?php if(isset($_GET['list'])) echo ' secondary active';?>"><i class="icon reorder"></i></a> </div>
+    <div class="push-right"> 
+        <a <?php if(!isset($_GET['grid'])) echo 'href="' . Url::buildUrl("grid", "true", "view") . '"';?> class="wojo small icon button<?php if(isset($_GET['grid'])) echo ' secondary active';?>"><i class="icon grid"></i></a> 
+        <a <?php if(isset($_GET['grid'])) echo 'href="' . Url::buildUrl("grid", null, "view") . '"';?> class="wojo small icon button<?php if(!isset($_GET['grid'])) echo ' secondary active';?>"><i class="icon reorder"></i></a>        
+    </div>
   </div>
-  <?php if(isset($_GET['list']) and $_GET['list'] == "true"):?>
-  <?php include (THEME . "/list_view.tpl.php");?>
+  <?php if(isset($_GET['grid']) and $_GET['grid'] == "true"):?>
+  <?php include (THEME . "/grid_view.tpl.php");?>  
   <?php else:?>
-  <?php include (THEME . "/grid_view.tpl.php");?>
+  <?php include (THEME . "/list_view.tpl.php");?>
   <?php endif;?>
   <div class="wojo double space divider"></div>
   <?php $result = $items->getFooterBits();?>
